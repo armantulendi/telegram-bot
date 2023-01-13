@@ -31,11 +31,11 @@ public class TelegramBot extends TelegramLongPollingBot {
             String messageText=update.getMessage().getText();
             long chatId=update.getMessage().getChatId();
             switch (messageText){
-                case "/start":
+                case "/basta":
                     startCommandReceived(chatId,update.getMessage().getChat().getFirstName());
                     break;
-                case "/command":
-                    startCommandReceived(chatId,update.getMessage().getChat().getFirstName());
+                case "/angimeAit":
+                    angimeCommandReceived(chatId,update.getMessage().getChat().getFirstName());
                     break;
                 default: sendMessage(chatId,messageText);
             }
@@ -44,7 +44,11 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     }
     private void startCommandReceived(long chatId,String name){
-        String answer=""+name+",ты че берега попутал?";
+        String answer=""+name+",озин баста";
+        sendMessage(chatId,answer);
+    }
+    private void  angimeCommandReceived(long chatId,String name){
+        String answer=""+name+",кандай ангиме айтайын?";
         sendMessage(chatId,answer);
     }
     private void sendMessage(long chatId,String textSend){
